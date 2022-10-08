@@ -13,7 +13,7 @@ export class TimerService {
     longBreak: 15,
   };
 
-  timerType: string = 'pomodoro' || 'shortBreak' || 'longBreak';
+  timerType: string = 'pomodoro';
 
   setTimerType(value: string) {
     this.timerType = value;
