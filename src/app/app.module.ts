@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { TimerTypeSwitcherComponent } from './components/timer-type-switcher/timer-type-switcher.component';
 import { TimerMainComponent } from './components/timer-main/timer-main.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     SettingsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
