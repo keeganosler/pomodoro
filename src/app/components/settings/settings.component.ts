@@ -11,6 +11,8 @@ import { TimerService } from '../../services/timer.service';
 })
 export class SettingsComponent implements OnInit {
   timesFormGroup: FormGroup = new FormGroup({});
+  color: string = '1';
+  font: string = '1';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,7 +29,11 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {}
 
   onUpdateColor(color: string) {
-    this.themeService.onUpdateColor(color);
+    this.color = color;
+  }
+
+  onUpdateFont(font: string) {
+    this.font = font;
   }
 
   onSaveSettings() {
@@ -37,5 +43,8 @@ export class SettingsComponent implements OnInit {
       this.timesFormGroup.get('shortBreak')?.value;
     this.timerService.times['longBreak'] =
       this.timesFormGroup.get('longBreak')?.value;
+
+    this.themeService.onUpdateColor(this.color);
+    this.themeService.onUpdateFont(this.font);
   }
 }

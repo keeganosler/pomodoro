@@ -18,4 +18,16 @@ export class ThemeService {
       this.document.documentElement.classList.add('color' + '-' + color);
     }
   }
+
+  onUpdateFont(font: string) {
+    if (this.document.documentElement.classList.value.includes('font')) {
+      let i = this.document.documentElement.classList.value.indexOf('font');
+      this.document.documentElement.classList.replace(
+        this.document.documentElement.classList[i],
+        'font' + '-' + font
+      );
+    } else {
+      this.document.documentElement.classList.add('font' + '-' + font);
+    }
+  }
 }

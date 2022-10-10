@@ -56,9 +56,20 @@
 <div class="d-flex align-items-center justify-content-between">
   <label class="form-label">Font</label>
   <div class="d-flex">
-    <button mat-mini-fab class="m-1" color="">A</button>
-    <button mat-mini-fab class="m-1" color="primary">B</button>
-    <button mat-mini-fab class="m-1" color="warn">C</button>
+    <button mat-mini-fab class="m-1" color="" (click)="onUpdateFont('1')">
+      A
+    </button>
+    <button
+      mat-mini-fab
+      class="m-1"
+      (click)="onUpdateFont('2')"
+      color="primary"
+    >
+      B
+    </button>
+    <button mat-mini-fab class="m-1" (click)="onUpdateFont('3')" color="warn">
+      C
+    </button>
   </div>
 </div>
 <hr />
