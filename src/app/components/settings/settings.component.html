@@ -36,9 +36,20 @@
 <div class="d-flex align-items-center justify-content-between">
   <label class="form-label">Color</label>
   <div class="d-flex">
-    <button mat-mini-fab class="m-1" color="">A</button>
-    <button mat-mini-fab class="m-1" color="primary">B</button>
-    <button mat-mini-fab class="m-1" color="warn">C</button>
+    <button mat-mini-fab class="m-1" color="" (click)="onUpdateColor('1')">
+      A
+    </button>
+    <button
+      mat-mini-fab
+      class="m-1"
+      color="primary"
+      (click)="onUpdateColor('2')"
+    >
+      B
+    </button>
+    <button mat-mini-fab class="m-1" color="warn" (click)="onUpdateColor('3')">
+      C
+    </button>
   </div>
 </div>
 <hr />

@@ -19,7 +19,7 @@ export class TimerService {
     this.timerType = value;
   }
 
-  currentTime: number = 0;
+  currentTime: number = this.times[this.timerType];
   currentTime$: Observable<number> = new Observable();
   timerSub: Subscription = new Subscription();
 

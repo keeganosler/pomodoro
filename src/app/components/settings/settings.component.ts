@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ThemeService } from '../../services/theme.service';
 import { TimerService } from '../../services/timer.service';
 
 @Component({
@@ -13,17 +14,20 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private timerService: TimerService
+    private timerService: TimerService,
+    private themeService: ThemeService
   ) {
     this.timesFormGroup = formBuilder.group({
-      pomodoro: [this.timerService.times['pomodoro']],
+      pomodoro: [this.timerService.times['pomodoro'] || ''],
       shortBreak: [this.timerService.times['shortBreak'] || ''],
       longBreak: [this.timerService.times['longBreak'] || ''],
     });
   }
 
-  ngOnInit(): void {
-    console.log(this.timerService.times['pomodoro']);
+  ngOnInit(): void {}
+
+  onUpdateColor(color: string) {
+    this.themeService.onUpdateColor(color);
   }
 
   onSaveSettings() {
