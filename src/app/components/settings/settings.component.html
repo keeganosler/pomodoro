@@ -1,18 +1,37 @@
 <label class="text-center form-label">Times</label>
-<div class="d-flex align-items-center justify-content-around">
-  <div class="m-1">
-    <label for="exampleFormControlInput1" class="form-label">Pomodoro</label>
-    <input class="form-control" id="exampleFormControlInput1" />
+<form [formGroup]="timesFormGroup">
+  <div class="d-flex align-items-center justify-content-around">
+    <div class="m-1">
+      <label for="exampleFormControlInput1" class="form-label">Pomodoro</label>
+      <input
+        class="form-control"
+        id="exampleFormControlInput1"
+        formControlName="pomodoro"
+      />
+    </div>
+    <div class="m-1">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Short Break</label
+      >
+      <input
+        class="form-control"
+        id="exampleFormControlInput1"
+        formControlName="shortBreak"
+      />
+    </div>
+    <div class="m-1">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Long Break</label
+      >
+      <input
+        class="form-control"
+        id="exampleFormControlInput1"
+        formControlName="longBreak"
+      />
+    </div>
   </div>
-  <div class="m-1">
-    <label for="exampleFormControlInput1" class="form-label">Short Break</label>
-    <input class="form-control" id="exampleFormControlInput1" />
-  </div>
-  <div class="m-1">
-    <label for="exampleFormControlInput1" class="form-label">Long Break</label>
-    <input class="form-control" id="exampleFormControlInput1" />
-  </div>
-</div>
+</form>
+
 <hr />
 <div class="d-flex align-items-center justify-content-between">
   <label class="form-label">Color</label>
@@ -38,4 +57,8 @@
     <button mat-mini-fab class="m-1" color="primary">L</button>
     <button mat-mini-fab class="m-1" color="warn">D</button>
   </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close="">Close</button
+  ><button mat-raised-button (click)="onSaveSettings()">Save</button>
 </div>

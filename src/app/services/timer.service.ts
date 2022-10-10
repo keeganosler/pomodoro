@@ -25,7 +25,7 @@ export class TimerService {
 
   startTimer() {
     let startTime: number =
-      this.currentTime === 0 ? this.times['pomodoro'] : this.currentTime;
+      this.currentTime === 0 ? this.times[this.timerType] : this.currentTime;
     this.currentTime$ = timer(0, 1000).pipe(
       scan((x) => --x, startTime),
       take(startTime)
