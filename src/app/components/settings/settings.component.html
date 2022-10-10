@@ -76,8 +76,22 @@
 <div class="d-flex align-items-center justify-content-between">
   <label class="form-label">Light Mode</label>
   <div class="d-flex">
-    <button mat-mini-fab class="m-1" color="primary">L</button>
-    <button mat-mini-fab class="m-1" color="warn">D</button>
+    <button
+      mat-mini-fab
+      class="m-1"
+      (click)="onUpdateLightMode(true)"
+      color="primary"
+    >
+      L
+    </button>
+    <button
+      mat-mini-fab
+      class="m-1"
+      (click)="onUpdateLightMode(false)"
+      color="warn"
+    >
+      D
+    </button>
   </div>
 </div>
 <div mat-dialog-actions>

@@ -30,4 +30,34 @@ export class ThemeService {
       this.document.documentElement.classList.add('font' + '-' + font);
     }
   }
+
+  onUpdateLightMode(lightMode: boolean) {
+    if (lightMode) {
+      if (this.document.documentElement.classList.value.includes('dark-mode')) {
+        let i =
+          this.document.documentElement.classList.value.indexOf('dark-mode');
+        this.document.documentElement.classList.replace(
+          this.document.documentElement.classList[i],
+          'light-mode'
+        );
+      } else {
+        this.document.documentElement.classList.add('light-mode');
+      }
+    } else {
+      if (
+        this.document.documentElement.classList.value.includes('light-mode')
+      ) {
+        let i =
+          this.document.documentElement.classList.value.indexOf('light-mode');
+        this.document.documentElement.classList.replace(
+          this.document.documentElement.classList[i],
+          'dark-mode'
+        );
+      } else {
+        this.document.documentElement.classList.add('dark-mode');
+      }
+    }
+
+    console.log(this.document.documentElement.classList);
+  }
 }

@@ -13,6 +13,7 @@ export class SettingsComponent implements OnInit {
   timesFormGroup: FormGroup = new FormGroup({});
   color: string = '1';
   font: string = '1';
+  lightMode: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,7 +27,9 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.onSaveSettings(); // set initial settings
+  }
 
   onUpdateColor(color: string) {
     this.color = color;
@@ -34,6 +37,10 @@ export class SettingsComponent implements OnInit {
 
   onUpdateFont(font: string) {
     this.font = font;
+  }
+
+  onUpdateLightMode(lightMode: boolean) {
+    this.lightMode = lightMode;
   }
 
   onSaveSettings() {
@@ -46,5 +53,6 @@ export class SettingsComponent implements OnInit {
 
     this.themeService.onUpdateColor(this.color);
     this.themeService.onUpdateFont(this.font);
+    this.themeService.onUpdateLightMode(this.lightMode);
   }
 }
