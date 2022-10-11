@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { TimerService } from '../../services/timer.service';
 
 @Component({
@@ -7,13 +8,10 @@ import { TimerService } from '../../services/timer.service';
   styleUrls: ['./timer-main.component.scss'],
 })
 export class TimerMainComponent implements OnInit {
+  faCoffee = faCoffee;
   constructor(public timerService: TimerService) {}
 
-  ngOnInit(): void {
-    this.timerService.currentTime$.subscribe((t) => {
-      console.log('current time in component: ', t);
-    });
-  }
+  ngOnInit(): void {}
 
   onClick1() {
     this.timerService.startTimer();
@@ -21,5 +19,14 @@ export class TimerMainComponent implements OnInit {
 
   onClick2() {
     this.timerService.stopTimer();
+  }
+
+  get timerProgress(): number {
+    return (
+      100 -
+      100 *
+        (this.timerService.currentTime /
+          this.timerService.times[this.timerService.timerType])
+    );
   }
 }

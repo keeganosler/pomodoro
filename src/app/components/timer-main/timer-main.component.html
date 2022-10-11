@@ -1,7 +1,12 @@
-<div class="d-flex flex-column">
-  <h1 class="text-center">{{ timerService.currentTime }}</h1>
-  <div class="text-center">
-    <button (click)="onClick1()">Start Timer</button>
-    <button (click)="onClick2()">Stop Timer</button>
+<mat-progress-spinner diameter="200" [value]="timerProgress">
+</mat-progress-spinner>
+<div class="spinner-text">
+  <div class="d-flex flex-column">
+    <h1 class="text-center">{{ timerService.currentTime }}</h1>
+    <div class="">
+      <button mat-icon-button><mat-icon svgIcon="faCoffee"></mat-icon></button>
+      <button (click)="onClick1()">Start Timer</button>
+      <button (click)="onClick2()">Stop Timer</button>
+    </div>
   </div>
 </div>
