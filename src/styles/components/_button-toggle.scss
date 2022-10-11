@@ -1,3 +1,5 @@
+@import "./../theme/theme.scss";
+
 .mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
 .mat-button-toggle-group-appearance-standard,
 .mat-button-toggle-group {
@@ -16,6 +18,12 @@
   background-color: red;
 }
 
+.dark-mode {
+  .mat-button-toggle-appearance-standard {
+    color: $neutral-light !important;
+  }
+}
+
 .mat-button-toggle-checked,
 .mat-button-toggle-checked.mat-button-toggle-appearance-standard
   .cdk-focused
@@ -24,4 +32,8 @@
   .mat-button-toggle-focus-overlay {
     background-color: transparent !important;
   }
+}
+
+.mat-button-toggle-appearance-standard {
+  background: transparent;
 }

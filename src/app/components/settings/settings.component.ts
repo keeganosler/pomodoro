@@ -1,3 +1,4 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import {
   BreakpointObserver,
   Breakpoints,
@@ -28,7 +29,8 @@ export class SettingsComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     private timerService: TimerService,
     private themeService: ThemeService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private dialogRef: DialogRef<SettingsComponent>
   ) {
     this.timesFormGroup = formBuilder.group({
       pomodoro: [this.timerService.times['pomodoro'] || ''],
@@ -43,7 +45,6 @@ export class SettingsComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    this.onSaveSettings(); // set initial settings
     this.isMobile$.subscribe((val) => {
       this.isMobile = val.matches;
     });
@@ -51,14 +52,17 @@ export class SettingsComponent implements OnInit {
 
   onUpdateColor(color: string) {
     this.color = color;
+    this.themeService.onUpdateColor(this.color);
   }
 
   onUpdateFont(font: string) {
     this.font = font;
+    this.themeService.onUpdateFont(this.font);
   }
 
   onUpdateLightMode(lightMode: boolean) {
     this.lightMode = lightMode;
+    this.themeService.onUpdateLightMode(this.lightMode);
   }
 
   onSaveSettings() {
@@ -72,5 +76,7 @@ export class SettingsComponent implements OnInit {
     this.themeService.onUpdateColor(this.color);
     this.themeService.onUpdateFont(this.font);
     this.themeService.onUpdateLightMode(this.lightMode);
+
+    this.dialogRef.close();
   }
 }

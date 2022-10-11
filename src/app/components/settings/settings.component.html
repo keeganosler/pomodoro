@@ -42,7 +42,7 @@
         for="exampleFormControlInput1"
         class="form-label sub-label"
         [ngClass]="{ 'flex-grow-1': isMobile }"
-        >Long Breakv</label
+        >Long Break <span class="text-muted small">(mins)</span></label
       >
       <input
         class="form-control"
@@ -103,12 +103,19 @@
 <div class="d-flex align-items-center justify-content-between">
   <label class="form-label main-label">Light Mode</label>
   <div class="d-flex">
-    <button mat-mini-fab class="m-1" (click)="onUpdateLightMode(true)" color="">
+    <button
+      mat-mini-fab
+      class="m-1"
+      [ngClass]="{ selected: lightMode }"
+      (click)="onUpdateLightMode(true)"
+      color=""
+    >
       <fa-icon [icon]="faSun"></fa-icon>
     </button>
     <button
       mat-mini-fab
       class="m-1"
+      [ngClass]="{ selected: !lightMode }"
       (click)="onUpdateLightMode(false)"
       color=""
     >
