@@ -10,13 +10,10 @@ export class ThemeService {
   onUpdateColor(color: string) {
     if (this.document.documentElement.classList.value.includes('color')) {
       let i = this.document.documentElement.classList.value.indexOf('color');
-      this.document.documentElement.classList.replace(
-        this.document.documentElement.classList[i],
-        'color' + '-' + color
-      );
-    } else {
-      this.document.documentElement.classList.add('color' + '-' + color);
+      let classType = this.document.documentElement.classList[i];
+      this.document.documentElement.classList.remove(classType);
     }
+    this.document.documentElement.classList.add('color' + '-' + color);
   }
 
   onUpdateFont(font: string) {

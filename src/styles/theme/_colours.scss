@@ -1,14 +1,15 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-//@include mat.core();
 
 $neutral-palette: mat.define-palette(mat.$gray-palette);
 $neutral-dark: map-get($neutral-palette, 900);
 $neutral: map-get($neutral-palette, 400);
 $neutral-light: map-get($neutral-palette, 50);
+
+$red-palette: mat.define-palette(mat.$deep-orange-palette);
+$red-primary: map-get($red-palette, 400);
+
+$green-palette: mat.define-palette(mat.$teal-palette);
+$green-primary: map-get($green-palette, 400);
+
+$purple-palette: mat.define-palette(mat.$purple-palette);
+$purple-primary: map-get($purple-palette, 400);

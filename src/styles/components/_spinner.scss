@@ -1,0 +1,27 @@
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: $red-primary;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 500ms linear;
+}
+
+.color-red {
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $red-primary;
+  }
+}
+
+.color-green {
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $green-primary;
+  }
+}
+
+.color-purple {
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $purple-primary;
+  }
+}

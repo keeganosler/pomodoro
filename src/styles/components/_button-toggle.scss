@@ -15,7 +15,25 @@
 
 .mat-button-toggle-checked .mat-button-toggle-button {
   border-radius: 20px !important;
-  background-color: red;
+  background-color: $red-primary;
+}
+
+.color-red {
+  .mat-button-toggle-checked .mat-button-toggle-button {
+    background-color: $red-primary;
+  }
+}
+
+.color-green {
+  .mat-button-toggle-checked .mat-button-toggle-button {
+    background-color: $green-primary;
+  }
+}
+
+.color-purple {
+  .mat-button-toggle-checked .mat-button-toggle-button {
+    background-color: $purple-primary;
+  }
 }
 
 .dark-mode {
@@ -36,4 +54,8 @@
 
 .mat-button-toggle-appearance-standard {
   background: transparent;
+}
+
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 36px;
 }

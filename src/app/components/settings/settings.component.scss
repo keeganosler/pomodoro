@@ -26,15 +26,15 @@ h3 {
     background-color: $neutral;
   }
   &.red-button {
-    background-color: #ff7043;
+    background-color: $red-primary;
   }
 
   &.green-button {
-    background-color: #26a69a;
+    background-color: $green-primary;
   }
 
   &.purple-button {
-    background-color: #ab47bc;
+    background-color: $purple-primary;
   }
 }
 
