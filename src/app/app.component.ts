@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { SettingsComponent } from './components/settings/settings.component';
 
 @Component({
@@ -8,6 +9,7 @@ import { SettingsComponent } from './components/settings/settings.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  faGear = faGear;
   title = 'pomodoro';
 
   constructor(public dialog: MatDialog) {}

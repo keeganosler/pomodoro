@@ -1,30 +1,52 @@
-<label class="text-center form-label">Times</label>
+<h3>Settings</h3>
+<hr />
+<label class="text-center form-label main-label">Times</label>
 <form [formGroup]="timesFormGroup">
-  <div class="d-flex align-items-center justify-content-around">
-    <div class="m-1">
-      <label for="exampleFormControlInput1" class="form-label">Pomodoro</label>
+  <div
+    class="d-flex"
+    [ngClass]="{
+      'align-items-center justify-content-between': !isMobile,
+      'flex-column': isMobile
+    }"
+  >
+    <div class="m-1" [ngClass]="{ 'd-flex align-items-center': isMobile }">
+      <label
+        for="exampleFormControlInput1"
+        class="form-label sub-label"
+        [ngClass]="{ 'flex-grow-1': isMobile }"
+        >Pomodoro <span class="text-muted small">(mins)</span></label
+      >
       <input
         class="form-control"
+        [ngClass]="{ 'w-50': isMobile }"
         id="exampleFormControlInput1"
         formControlName="pomodoro"
       />
     </div>
-    <div class="m-1">
-      <label for="exampleFormControlInput1" class="form-label"
-        >Short Break</label
+    <div class="m-1" [ngClass]="{ 'd-flex align-items-center': isMobile }">
+      <label
+        for="exampleFormControlInput1"
+        class="form-label sub-label"
+        [ngClass]="{ 'flex-grow-1': isMobile }"
+        >Short Break <span class="text-muted small">(mins)</span></label
       >
       <input
         class="form-control"
+        [ngClass]="{ 'w-50': isMobile }"
         id="exampleFormControlInput1"
         formControlName="shortBreak"
       />
     </div>
-    <div class="m-1">
-      <label for="exampleFormControlInput1" class="form-label"
-        >Long Break</label
+    <div class="m-1" [ngClass]="{ 'd-flex align-items-center': isMobile }">
+      <label
+        for="exampleFormControlInput1"
+        class="form-label sub-label"
+        [ngClass]="{ 'flex-grow-1': isMobile }"
+        >Long Breakv</label
       >
       <input
         class="form-control"
+        [ngClass]="{ 'w-50': isMobile }"
         id="exampleFormControlInput1"
         formControlName="longBreak"
       />
@@ -34,67 +56,68 @@
 
 <hr />
 <div class="d-flex align-items-center justify-content-between">
-  <label class="form-label">Color</label>
+  <label class="form-label main-label">Color</label>
   <div class="d-flex">
-    <button mat-mini-fab class="m-1" color="" (click)="onUpdateColor('1')">
-      A
-    </button>
     <button
       mat-mini-fab
-      class="m-1"
-      color="primary"
+      class="m-1 red-button"
+      (click)="onUpdateColor('1')"
+    ></button>
+    <button
+      mat-mini-fab
+      class="m-1 green-button"
       (click)="onUpdateColor('2')"
-    >
-      B
-    </button>
-    <button mat-mini-fab class="m-1" color="warn" (click)="onUpdateColor('3')">
-      C
-    </button>
+    ></button>
+    <button
+      mat-mini-fab
+      class="m-1 purple-button"
+      (click)="onUpdateColor('3')"
+    ></button>
   </div>
 </div>
 <hr />
 <div class="d-flex align-items-center justify-content-between">
-  <label class="form-label">Font</label>
+  <label class="form-label main-label">Font</label>
   <div class="d-flex">
-    <button mat-mini-fab class="m-1" color="" (click)="onUpdateFont('1')">
-      A
-    </button>
+    <button
+      mat-mini-fab
+      class="m-1"
+      color=""
+      (click)="onUpdateFont('1')"
+    ></button>
     <button
       mat-mini-fab
       class="m-1"
       (click)="onUpdateFont('2')"
-      color="primary"
-    >
-      B
-    </button>
-    <button mat-mini-fab class="m-1" (click)="onUpdateFont('3')" color="warn">
-      C
-    </button>
+      color=""
+    ></button>
+    <button
+      mat-mini-fab
+      class="m-1"
+      (click)="onUpdateFont('3')"
+      color=""
+    ></button>
   </div>
 </div>
 <hr />
 <div class="d-flex align-items-center justify-content-between">
-  <label class="form-label">Light Mode</label>
+  <label class="form-label main-label">Light Mode</label>
   <div class="d-flex">
-    <button
-      mat-mini-fab
-      class="m-1"
-      (click)="onUpdateLightMode(true)"
-      color="primary"
-    >
-      L
+    <button mat-mini-fab class="m-1" (click)="onUpdateLightMode(true)" color="">
+      <fa-icon [icon]="faSun"></fa-icon>
     </button>
     <button
       mat-mini-fab
       class="m-1"
       (click)="onUpdateLightMode(false)"
-      color="warn"
+      color=""
     >
-      D
+      <fa-icon [icon]="faMoon"></fa-icon>
     </button>
   </div>
 </div>
+<hr />
 <div mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close="">Close</button
-  ><button mat-raised-button (click)="onSaveSettings()">Save</button>
+  <button mat-stroked-button mat-dialog-close="">Close</button
+  ><button mat-stroked-button (click)="onSaveSettings()">Save</button>
 </div>

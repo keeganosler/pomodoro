@@ -1,5 +1,12 @@
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState,
+} from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
 import { ThemeService } from '../../services/theme.service';
 import { TimerService } from '../../services/timer.service';
 
@@ -14,11 +21,14 @@ export class SettingsComponent implements OnInit {
   color: string = '1';
   font: string = '1';
   lightMode: boolean = true;
+  faSun = faSun;
+  faMoon = faMoon;
 
   constructor(
     private formBuilder: UntypedFormBuilder,
     private timerService: TimerService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private breakpointObserver: BreakpointObserver
   ) {
     this.timesFormGroup = formBuilder.group({
       pomodoro: [this.timerService.times['pomodoro'] || ''],
@@ -27,8 +37,16 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  isMobile = true;
+  isMobile$: Observable<BreakpointState> = this.breakpointObserver.observe(
+    Breakpoints.Handset
+  );
+
   ngOnInit(): void {
     this.onSaveSettings(); // set initial settings
+    this.isMobile$.subscribe((val) => {
+      this.isMobile = val.matches;
+    });
   }
 
   onUpdateColor(color: string) {
