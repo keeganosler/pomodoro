@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ThemeService } from '../../services/theme.service';
 import { TimerService } from '../../services/timer.service';
 
@@ -7,16 +7,16 @@ import { TimerService } from '../../services/timer.service';
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
-  providers: [FormBuilder],
+  providers: [UntypedFormBuilder],
 })
 export class SettingsComponent implements OnInit {
-  timesFormGroup: FormGroup = new FormGroup({});
+  timesFormGroup: UntypedFormGroup = new UntypedFormGroup({});
   color: string = '1';
   font: string = '1';
   lightMode: boolean = true;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private timerService: TimerService,
     private themeService: ThemeService
   ) {

@@ -3,10 +3,16 @@
 <div class="spinner-text">
   <div class="d-flex flex-column">
     <h1 class="text-center">{{ timerService.currentTime }}</h1>
-    <div class="">
-      <button mat-icon-button><mat-icon svgIcon="faCoffee"></mat-icon></button>
-      <button (click)="onClick1()">Start Timer</button>
-      <button (click)="onClick2()">Stop Timer</button>
+    <div class="d-flex">
+      <button
+        mat-icon-button
+        (click)="timerOn ? onStopTimer() : onStartTimer()"
+      >
+        <fa-icon [icon]="playPauseIcon"></fa-icon>
+      </button>
+      <button mat-icon-button (click)="onClearTimer()">
+        <fa-icon [icon]="faRotateLeft"></fa-icon>
+      </button>
     </div>
   </div>
 </div>

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPause,
+  faPlay,
+  faRotateLeft,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
 import { TimerService } from '../../services/timer.service';
 
 @Component({
@@ -8,17 +13,29 @@ import { TimerService } from '../../services/timer.service';
   styleUrls: ['./timer-main.component.scss'],
 })
 export class TimerMainComponent implements OnInit {
-  faCoffee = faCoffee;
+  faPlay = faPlay;
+  faPause = faPause;
+  faRotateLeft = faRotateLeft;
   constructor(public timerService: TimerService) {}
+
+  timerOn: boolean = false;
 
   ngOnInit(): void {}
 
-  onClick1() {
+  onStartTimer() {
     this.timerService.startTimer();
+    this.timerOn = true;
   }
 
-  onClick2() {
+  onStopTimer() {
     this.timerService.stopTimer();
+    this.timerOn = false;
+  }
+
+  onClearTimer() {
+    this.onStopTimer();
+    this.timerService.currentTime =
+      this.timerService.times[this.timerService.timerType];
   }
 
   get timerProgress(): number {
@@ -28,5 +45,9 @@ export class TimerMainComponent implements OnInit {
         (this.timerService.currentTime /
           this.timerService.times[this.timerService.timerType])
     );
+  }
+
+  get playPauseIcon(): IconDefinition {
+    return this.timerOn ? faPause : faPlay;
   }
 }

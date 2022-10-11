@@ -36,6 +36,14 @@ $pomodoro-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 @import "./components/button-toggle";
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #3fb53f;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 500ms linear;
+}
+
 html,
 body {
   height: 100%;
