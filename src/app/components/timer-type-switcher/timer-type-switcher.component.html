@@ -3,6 +3,7 @@
     [checked]="timerType == t"
     *ngFor="let t of ['pomodoro', 'shortBreak', 'longBreak']"
     [value]="t"
+    [disableRipple]="true"
     >{{ t }}
   </mat-button-toggle>
 </mat-button-toggle-group>
