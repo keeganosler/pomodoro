@@ -1,3 +1,19 @@
-<app-timer-type-switcher></app-timer-type-switcher>
-<app-timer-main></app-timer-main>
-<button (click)="onOpenSettings()">Settings</button>
+<div class="d-flex justify-content-center">
+  <div class="d-flex flex-column">
+    <div
+      class="container-above-below d-flex align-items-center justify-content-center"
+    >
+      <app-timer-type-switcher></app-timer-type-switcher>
+    </div>
+    <div
+      class="container-main d-flex align-items-center justify-content-center"
+    >
+      <app-timer-main></app-timer-main>
+    </div>
+    <div
+      class="container-above-below d-flex align-items-center justify-content-center"
+    >
+      <button (click)="onOpenSettings()">Settings</button>
+    </div>
+  </div>
+</div>
