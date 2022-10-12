@@ -2,7 +2,9 @@
 </mat-progress-spinner>
 <div class="spinner-text">
   <div class="d-flex flex-column">
-    <h1 class="text-center">{{ timerService.currentTime }}</h1>
+    <h1 class="text-center">
+      {{ timerService.currentTime * 1000 | date: "mm:ss" }}
+    </h1>
     <div class="d-flex">
       <button
         mat-icon-button
