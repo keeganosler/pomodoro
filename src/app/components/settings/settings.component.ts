@@ -46,6 +46,21 @@ export class SettingsComponent implements OnInit {
     this.isMobile$.subscribe((val) => {
       this.isMobile = val.matches;
     });
+    this.timesFormGroup.get('pomodoro')?.valueChanges.subscribe((t) => {
+      this.timerService.times['pomodoro'] = t * 60;
+      this.timerService.currentTime =
+        this.timerService.times[this.timerService.timerType];
+    });
+    this.timesFormGroup.get('shortBreak')?.valueChanges.subscribe((t) => {
+      this.timerService.times['shortBreak'] = t * 60;
+      this.timerService.currentTime =
+        this.timerService.times[this.timerService.timerType];
+    });
+    this.timesFormGroup.get('longBreak')?.valueChanges.subscribe((t) => {
+      this.timerService.times['longBreak'] = t * 60;
+      this.timerService.currentTime =
+        this.timerService.times[this.timerService.timerType];
+    });
   }
 
   onUpdateColor(color: string) {
