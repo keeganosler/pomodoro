@@ -59,3 +59,24 @@
 .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
   line-height: 36px;
 }
+
+.font-helv {
+  .mat-button-toggle,
+  .mat-stroked-button {
+    font-family: "Helvetica Neue" !important;
+  }
+}
+
+.font-roboto {
+  .mat-button-toggle,
+  .mat-stroked-button {
+    font-family: Roboto !important;
+  }
+}
+
+.font-arial {
+  .mat-button-toggle,
+  .mat-stroked-button {
+    font-family: "Arial" !important;
+  }
+}

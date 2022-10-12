@@ -79,21 +79,33 @@
 <div class="d-flex align-items-center justify-content-between">
   <label class="form-label main-label">Font</label>
   <div class="d-flex">
-    <button mat-mini-fab class="m-1" color="" (click)="onUpdateFont('1')">
-      <span>Aa</span>
+    <button
+      mat-mini-fab
+      class="m-1"
+      color=""
+      (click)="onUpdateFont('roboto')"
+      [ngClass]="{ selected: font === 'roboto' }"
+    >
+      <span class="font-roboto">Aa</span>
     </button>
     <button
       mat-mini-fab
       class="m-1"
-      (click)="onUpdateFont('2')"
+      (click)="onUpdateFont('helv')"
       color=""
-    ></button>
+      [ngClass]="{ selected: font === 'helv' }"
+    >
+      <span class="font-helv">Aa</span>
+    </button>
     <button
       mat-mini-fab
       class="m-1"
-      (click)="onUpdateFont('3')"
+      (click)="onUpdateFont('arial')"
       color=""
-    ></button>
+      [ngClass]="{ selected: font === 'arial' }"
+    >
+      <span class="font-arial">Aa</span>
+    </button>
   </div>
 </div>
 <hr />
@@ -122,6 +134,5 @@
 </div>
 <hr />
 <div mat-dialog-actions>
-  <button mat-stroked-button mat-dialog-close="">Close</button
-  ><button mat-stroked-button (click)="onSaveSettings()">Save</button>
+  <button mat-stroked-button mat-dialog-close="">Close</button>
 </div>

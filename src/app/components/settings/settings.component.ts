@@ -1,4 +1,3 @@
-import { DialogRef } from '@angular/cdk/dialog';
 import {
   BreakpointObserver,
   Breakpoints,
@@ -19,8 +18,8 @@ import { TimerService } from '../../services/timer.service';
 })
 export class SettingsComponent implements OnInit {
   timesFormGroup: UntypedFormGroup = new UntypedFormGroup({});
-  color: string = '1';
-  font: string = '1';
+  color: string = 'red';
+  font: string = 'roboto';
   lightMode: boolean = true;
   faSun = faSun;
   faMoon = faMoon;
@@ -29,8 +28,7 @@ export class SettingsComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     private timerService: TimerService,
     private themeService: ThemeService,
-    private breakpointObserver: BreakpointObserver,
-    private dialogRef: DialogRef<SettingsComponent>
+    private breakpointObserver: BreakpointObserver
   ) {
     this.timesFormGroup = formBuilder.group({
       pomodoro: [this.timerService.times['pomodoro'] || ''],
@@ -63,20 +61,5 @@ export class SettingsComponent implements OnInit {
   onUpdateLightMode(lightMode: boolean) {
     this.lightMode = lightMode;
     this.themeService.onUpdateLightMode(this.lightMode);
-  }
-
-  onSaveSettings() {
-    this.timerService.times['pomodoro'] =
-      this.timesFormGroup.get('pomodoro')?.value;
-    this.timerService.times['shortBreak'] =
-      this.timesFormGroup.get('shortBreak')?.value;
-    this.timerService.times['longBreak'] =
-      this.timesFormGroup.get('longBreak')?.value;
-
-    this.themeService.onUpdateColor(this.color);
-    this.themeService.onUpdateFont(this.font);
-    this.themeService.onUpdateLightMode(this.lightMode);
-
-    this.dialogRef.close();
   }
 }

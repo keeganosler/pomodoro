@@ -1,3 +1,4 @@
+@use "@angular/material" as mat;
 @import "./theme/colours";
 @import "./mat-theme.scss";
 
@@ -12,6 +13,30 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.font-roboto {
+  font-family: Roboto;
+  body,
+  h1 {
+    font-family: Roboto;
+  }
+}
+
+.font-helv {
+  font-family: "Helvetica Neue";
+  body,
+  h1 {
+    font-family: "Helvetica Neue";
+  }
+}
+
+.font-arial {
+  font-family: "Arial";
+  body,
+  h1 {
+    font-family: "Arial";
+  }
 }
 
 .light-mode {
