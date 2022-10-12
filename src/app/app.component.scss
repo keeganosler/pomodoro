@@ -1,7 +1,17 @@
+@import "./../styles/theme/theme.scss";
+
 .container-above-below {
   height: 25vh;
 }
 
 .container-main {
   height: 50vh;
+}
+
+.timer-container {
+  border: 1px solid $neutral;
+  padding: 20px;
+  border-radius: 100%;
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
 }
