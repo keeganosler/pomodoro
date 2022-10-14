@@ -4,6 +4,6 @@
     *ngFor="let t of ['pomodoro', 'shortBreak', 'longBreak']"
     [value]="t"
     [disableRipple]="true"
-    >{{ t }}
+    >{{ t | camelcaseToTitlecase }}
   </mat-button-toggle>
 </mat-button-toggle-group>

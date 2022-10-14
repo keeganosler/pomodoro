@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { TimerMainComponent } from './components/timer-main/timer-main.component';
 import { TimerTypeSwitcherComponent } from './components/timer-type-switcher/timer-type-switcher.component';
+import { CamelcaseToTitlecasePipe } from './pipes/camelcase-to-titlecase.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { TimerTypeSwitcherComponent } from './components/timer-type-switcher/tim
     TimerTypeSwitcherComponent,
     TimerMainComponent,
     SettingsComponent,
+    CamelcaseToTitlecasePipe,
   ],
   imports: [
     BrowserModule,
