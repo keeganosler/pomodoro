@@ -5,7 +5,7 @@ import {
 } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { ThemeService } from '../../services/theme.service';
 import { TimerService } from '../../services/timer.service';
@@ -18,11 +18,9 @@ import { TimerService } from '../../services/timer.service';
 })
 export class SettingsComponent implements OnInit {
   timesFormGroup: UntypedFormGroup = new UntypedFormGroup({});
-  color: string = 'red';
-  font: string = 'roboto';
-  lightMode: boolean = true;
   faSun = faSun;
   faMoon = faMoon;
+  faCheck = faCheck;
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -64,17 +62,26 @@ export class SettingsComponent implements OnInit {
   }
 
   onUpdateColor(color: string) {
-    this.color = color;
-    this.themeService.onUpdateColor(this.color);
+    this.themeService.onUpdateColor(color);
   }
 
   onUpdateFont(font: string) {
-    this.font = font;
-    this.themeService.onUpdateFont(this.font);
+    this.themeService.onUpdateFont(font);
   }
 
   onUpdateLightMode(lightMode: boolean) {
-    this.lightMode = lightMode;
-    this.themeService.onUpdateLightMode(this.lightMode);
+    this.themeService.onUpdateLightMode(lightMode);
+  }
+
+  getIsColor(color: string): boolean {
+    return this.themeService.getIsColor(color);
+  }
+
+  getIsFont(font: string): boolean {
+    return this.themeService.getIsFont(font);
+  }
+
+  getIsLightMode(): boolean {
+    return this.themeService.getIsLightMode();
   }
 }

@@ -58,21 +58,23 @@
 <div class="d-flex align-items-center justify-content-between">
   <label class="form-label main-label">Color</label>
   <div class="d-flex">
-    <button
-      mat-mini-fab
-      class="m-1 red-button"
-      (click)="onUpdateColor('red')"
-    ></button>
+    <button mat-mini-fab class="m-1 red-button" (click)="onUpdateColor('red')">
+      <fa-icon *ngIf="getIsColor('red')" [icon]="faCheck"></fa-icon>
+    </button>
     <button
       mat-mini-fab
       class="m-1 green-button"
       (click)="onUpdateColor('green')"
-    ></button>
+    >
+      <fa-icon *ngIf="getIsColor('green')" [icon]="faCheck"></fa-icon>
+    </button>
     <button
       mat-mini-fab
       class="m-1 purple-button"
       (click)="onUpdateColor('purple')"
-    ></button>
+    >
+      <fa-icon *ngIf="getIsColor('purple')" [icon]="faCheck"></fa-icon>
+    </button>
   </div>
 </div>
 <hr />
@@ -84,7 +86,7 @@
       class="m-1"
       color=""
       (click)="onUpdateFont('roboto')"
-      [ngClass]="{ selected: font === 'roboto' }"
+      [ngClass]="{ selected: getIsFont('roboto') }"
     >
       <span class="font-roboto">Aa</span>
     </button>
@@ -93,7 +95,7 @@
       class="m-1"
       (click)="onUpdateFont('helv')"
       color=""
-      [ngClass]="{ selected: font === 'helv' }"
+      [ngClass]="{ selected: getIsFont('helv') }"
     >
       <span class="font-helv">Aa</span>
     </button>
@@ -102,7 +104,7 @@
       class="m-1"
       (click)="onUpdateFont('arial')"
       color=""
-      [ngClass]="{ selected: font === 'arial' }"
+      [ngClass]="{ selected: getIsFont('arial') }"
     >
       <span class="font-arial">Aa</span>
     </button>
@@ -115,7 +117,7 @@
     <button
       mat-mini-fab
       class="m-1"
-      [ngClass]="{ selected: lightMode }"
+      [ngClass]="{ selected: getIsLightMode() }"
       (click)="onUpdateLightMode(true)"
       color=""
     >
@@ -124,7 +126,7 @@
     <button
       mat-mini-fab
       class="m-1"
-      [ngClass]="{ selected: !lightMode }"
+      [ngClass]="{ selected: !getIsLightMode() }"
       (click)="onUpdateLightMode(false)"
       color=""
     >

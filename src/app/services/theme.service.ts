@@ -7,6 +7,22 @@ import { Inject, Injectable } from '@angular/core';
 export class ThemeService {
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
+  getIsColor(color: string) {
+    return this.document.documentElement.classList.value.includes(
+      'color' + '-' + color
+    );
+  }
+
+  getIsFont(font: string) {
+    return this.document.documentElement.classList.value.includes(
+      'font' + '-' + font
+    );
+  }
+
+  getIsLightMode() {
+    return this.document.documentElement.classList.value.includes('light-mode');
+  }
+
   onUpdateColor(color: string) {
     if (this.document.documentElement.classList.value.includes('color')) {
       let i = this.document.documentElement.classList.value.indexOf('color');
