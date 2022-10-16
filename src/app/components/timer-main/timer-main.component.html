@@ -3,7 +3,9 @@
 <div class="spinner-text">
   <div class="d-flex flex-column">
     <h1 class="text-center">
-      {{ timerService.currentTime * 1000 | date: "mm:ss" }}
+      {{
+        timerService.currentTime | timeConversion: "sec":"msec" | date: "mm:ss"
+      }}
     </h1>
     <div class="d-flex">
       <button
