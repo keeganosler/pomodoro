@@ -1,10 +1,6 @@
-@use "@angular/material" as mat;
-@import "./theme/colours";
 @import "./mat-theme.scss";
-
-/* You can add global styles to this file, and also import other style files */
-@import "./components/button-toggle";
-@import "./components/spinner";
+@import "./theme/theme";
+@import "./components/components.scss";
 
 html,
 body {
@@ -15,44 +11,34 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.color-red {
+  @include colour($red-primary);
+}
+
+.color-green {
+  @include colour($green-primary);
+}
+
+.color-purple {
+  @include colour($purple-primary);
+}
+
 .font-roboto {
-  font-family: Roboto;
-  body,
-  h1 {
-    font-family: Roboto;
-  }
+  @include font($font-roboto);
 }
 
 .font-helv {
-  font-family: "Helvetica Neue";
-  body,
-  h1 {
-    font-family: "Helvetica Neue";
-  }
+  @include font($font-helv);
 }
 
 .font-arial {
-  font-family: "Arial";
-  body,
-  h1 {
-    font-family: "Arial";
-  }
+  @include font($font-arial);
 }
 
 .light-mode {
-  body,
-  .mat-dialog-container,
-  .form-control {
-    background-color: $neutral-light;
-    color: $neutral-dark;
-  }
+  @include light-mode();
 }
 
 .dark-mode {
-  body,
-  .mat-dialog-container,
-  .form-control {
-    background-color: $neutral-dark;
-    color: $neutral-light;
-  }
+  @include dark-mode();
 }

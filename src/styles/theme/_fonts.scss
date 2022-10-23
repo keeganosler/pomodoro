@@ -1,0 +1,15 @@
+$font-roboto: Roboto;
+$font-helv: "Helvetica Neue";
+$font-arial: "Arial";
+
+@mixin font($font) {
+  font-family: $font;
+  body,
+  h1 {
+    font-family: $font;
+  }
+  .mat-button-toggle,
+  .mat-stroked-button {
+    font-family: $font !important;
+  }
+}

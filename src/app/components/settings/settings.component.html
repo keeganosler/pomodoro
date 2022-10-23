@@ -58,19 +58,19 @@
 <div class="d-flex align-items-center justify-content-between">
   <label class="form-label main-label">Color</label>
   <div class="d-flex">
-    <button mat-mini-fab class="m-1 red-button" (click)="onUpdateColor('red')">
+    <button mat-mini-fab class="m-1 color-red" (click)="onUpdateColor('red')">
       <fa-icon *ngIf="getIsColor('red')" [icon]="faCheck"></fa-icon>
     </button>
     <button
       mat-mini-fab
-      class="m-1 green-button"
+      class="m-1 color-green"
       (click)="onUpdateColor('green')"
     >
       <fa-icon *ngIf="getIsColor('green')" [icon]="faCheck"></fa-icon>
     </button>
     <button
       mat-mini-fab
-      class="m-1 purple-button"
+      class="m-1 color-purple"
       (click)="onUpdateColor('purple')"
     >
       <fa-icon *ngIf="getIsColor('purple')" [icon]="faCheck"></fa-icon>

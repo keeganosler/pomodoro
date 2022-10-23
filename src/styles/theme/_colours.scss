@@ -13,3 +13,39 @@ $green-primary: map-get($green-palette, 400);
 
 $purple-palette: mat.define-palette(mat.$purple-palette);
 $purple-primary: map-get($purple-palette, 400);
+
+@mixin colour($colour) {
+  background-color: $colour;
+  .mat-button-toggle-checked .mat-button-toggle-button {
+    background-color: $colour;
+  }
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $colour;
+  }
+}
+
+@mixin light-mode {
+  body,
+  .mat-dialog-container,
+  .form-control {
+    background-color: $neutral-light;
+    color: $neutral-dark;
+  }
+}
+
+@mixin dark-mode {
+  body,
+  .mat-dialog-container,
+  .form-control {
+    background-color: $neutral-dark;
+    color: $neutral-light;
+  }
+  .mat-stroked-button {
+    border: 1px solid $neutral-light !important;
+    color: $neutral-light !important;
+  }
+  .mat-stroked-button:not(.mat-button-disabled) {
+    border-color: $neutral-light !important;
+  }
+}

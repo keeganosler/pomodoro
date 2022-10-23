@@ -18,30 +18,6 @@
   background-color: $red-primary;
 }
 
-.color-red {
-  .mat-button-toggle-checked .mat-button-toggle-button {
-    background-color: $red-primary;
-  }
-}
-
-.color-green {
-  .mat-button-toggle-checked .mat-button-toggle-button {
-    background-color: $green-primary;
-  }
-}
-
-.color-purple {
-  .mat-button-toggle-checked .mat-button-toggle-button {
-    background-color: $purple-primary;
-  }
-}
-
-.dark-mode {
-  .mat-button-toggle-appearance-standard {
-    color: $neutral-light !important;
-  }
-}
-
 .mat-button-toggle-checked,
 .mat-button-toggle-checked.mat-button-toggle-appearance-standard
   .cdk-focused
@@ -58,25 +34,4 @@
 
 .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
   line-height: 36px;
-}
-
-.font-helv {
-  .mat-button-toggle,
-  .mat-stroked-button {
-    font-family: "Helvetica Neue" !important;
-  }
-}
-
-.font-roboto {
-  .mat-button-toggle,
-  .mat-stroked-button {
-    font-family: Roboto !important;
-  }
-}
-
-.font-arial {
-  .mat-button-toggle,
-  .mat-stroked-button {
-    font-family: "Arial" !important;
-  }
 }

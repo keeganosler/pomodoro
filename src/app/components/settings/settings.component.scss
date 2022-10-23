@@ -25,29 +25,19 @@ h3 {
   &.selected {
     background-color: $neutral;
   }
-  &.red-button {
-    background-color: $red-primary;
+  &.color-red {
+    @include colour($red-primary);
   }
 
-  &.green-button {
-    background-color: $green-primary;
+  &.color-green {
+    @include colour($green-primary);
   }
 
-  &.purple-button {
-    background-color: $purple-primary;
+  &.color-purple {
+    @include colour($purple-primary);
   }
 }
 
 .form-control {
   font-size: unset !important;
-}
-
-.dark-mode {
-  .mat-stroked-button {
-    border: 1px solid $neutral-light !important;
-    color: $neutral-light !important;
-  }
-  .mat-stroked-button:not(.mat-button-disabled) {
-    border-color: $neutral-light !important;
-  }
 }
