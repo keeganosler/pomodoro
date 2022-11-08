@@ -38,6 +38,10 @@ export class TimerMainComponent implements OnInit {
       this.timerService.times[this.timerService.timerType];
   }
 
+  get timeToDisplay(): number {
+    return this.timerService.currentTime;
+  }
+
   get timerProgress(): number {
     return (
       100 -

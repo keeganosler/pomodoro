@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, scan, Subscription, take, timer } from 'rxjs';
+import { TIMES } from '../app.contants';
 
 @Injectable({
   providedIn: 'root',
@@ -8,15 +9,17 @@ export class TimerService {
   constructor() {}
 
   times: { [key: string]: number } = {
-    pomodoro: 1500,
-    shortBreak: 300,
-    longBreak: 900,
+    pomodoro: TIMES[0].defaultTime,
+    shortBreak: TIMES[1].defaultTime,
+    longBreak: TIMES[2].defaultTime,
   };
 
   timerType: string = 'pomodoro';
 
   setTimerType(value: string) {
     this.timerType = value;
+    this.stopTimer();
+    this.currentTime = this.times[this.timerType];
   }
 
   currentTime: number = this.times[this.timerType];

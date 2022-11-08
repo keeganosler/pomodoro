@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { faCheck, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
+import { COLORS, FONTS, TIMES } from '../../app.contants';
 import { TimeConversionPipe } from '../../pipes/time-conversion.pipe';
 import { ThemeService } from '../../services/theme.service';
 import { TimerService } from '../../services/timer.service';
@@ -30,7 +31,37 @@ export class SettingsComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private timeConversionPipe: TimeConversionPipe
   ) {
-    this.timesFormGroup = formBuilder.group({
+    this.createFormGroup();
+  }
+
+  isMobile = true;
+  isMobile$: Observable<BreakpointState> = this.breakpointObserver.observe(
+    Breakpoints.Handset
+  );
+
+  times = TIMES;
+  colors = COLORS;
+  fonts = FONTS;
+
+  ngOnInit(): void {
+    this.isMobile$.subscribe((val) => {
+      this.isMobile = val.matches;
+    });
+    TIMES.forEach((time) => {
+      this.timesFormGroup.get(time.type)?.valueChanges.subscribe((t) => {
+        this.timerService.times[time.type] = this.timeConversionPipe.transform(
+          t,
+          'min',
+          'sec'
+        );
+        this.timerService.currentTime =
+          this.timerService.times[this.timerService.timerType];
+      });
+    });
+  }
+
+  createFormGroup() {
+    this.timesFormGroup = this.formBuilder.group({
       pomodoro: [
         this.timeConversionPipe.transform(
           this.timerService.times['pomodoro'],
@@ -55,65 +86,19 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  isMobile = true;
-  isMobile$: Observable<BreakpointState> = this.breakpointObserver.observe(
-    Breakpoints.Handset
-  );
-
-  ngOnInit(): void {
-    this.isMobile$.subscribe((val) => {
-      this.isMobile = val.matches;
-    });
-    this.timesFormGroup.get('pomodoro')?.valueChanges.subscribe((t) => {
-      this.timerService.times['pomodoro'] = this.timeConversionPipe.transform(
-        t,
-        'min',
-        'sec'
-      );
-      this.timerService.currentTime =
-        this.timerService.times[this.timerService.timerType];
-    });
-    this.timesFormGroup.get('shortBreak')?.valueChanges.subscribe((t) => {
-      this.timerService.times['shortBreak'] = this.timeConversionPipe.transform(
-        t,
-        'min',
-        'sec'
-      );
-      this.timerService.currentTime =
-        this.timerService.times[this.timerService.timerType];
-    });
-    this.timesFormGroup.get('longBreak')?.valueChanges.subscribe((t) => {
-      this.timerService.times['longBreak'] = this.timeConversionPipe.transform(
-        t,
-        'min',
-        'sec'
-      );
-      this.timerService.currentTime =
-        this.timerService.times[this.timerService.timerType];
-    });
+  onUpdateColor(colorClassName: string) {
+    this.themeService.onUpdateColor(colorClassName);
   }
 
-  onUpdateColor(color: string) {
-    this.themeService.onUpdateColor(color);
-  }
-
-  onUpdateFont(font: string) {
-    this.themeService.onUpdateFont(font);
+  onUpdateFont(fontClassName: string) {
+    this.themeService.onUpdateFont(fontClassName);
   }
 
   onUpdateLightMode(lightMode: boolean) {
     this.themeService.onUpdateLightMode(lightMode);
   }
 
-  getIsColor(color: string): boolean {
-    return this.themeService.getIsColor(color);
-  }
-
-  getIsFont(font: string): boolean {
-    return this.themeService.getIsFont(font);
-  }
-
-  getIsLightMode(): boolean {
-    return this.themeService.getIsLightMode();
+  getIsSelected(className: string) {
+    return this.themeService.classList.includes(className);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { COLORS, FONTS } from './app.contants';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ThemeService } from './services/theme.service';
 
@@ -16,8 +17,8 @@ export class AppComponent implements OnInit {
   constructor(public dialog: MatDialog, public themeService: ThemeService) {}
 
   ngOnInit(): void {
-    this.themeService.onUpdateColor('red');
-    this.themeService.onUpdateFont('roboto');
+    this.themeService.onUpdateColor(COLORS[0].className);
+    this.themeService.onUpdateFont(FONTS[0].className);
     this.themeService.onUpdateLightMode(true);
   }
 

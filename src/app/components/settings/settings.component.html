@@ -9,71 +9,38 @@
       'flex-column': isMobile
     }"
   >
-    <div class="m-1" [ngClass]="{ 'd-flex align-items-center': isMobile }">
-      <label
-        for="exampleFormControlInput1"
-        class="form-label sub-label"
-        [ngClass]="{ 'flex-grow-1': isMobile }"
-        >Pomodoro <span class="text-muted small">(mins)</span></label
-      >
-      <input
-        class="form-control"
-        [ngClass]="{ 'w-50': isMobile }"
-        id="exampleFormControlInput1"
-        formControlName="pomodoro"
-      />
-    </div>
-    <div class="m-1" [ngClass]="{ 'd-flex align-items-center': isMobile }">
-      <label
-        for="exampleFormControlInput1"
-        class="form-label sub-label"
-        [ngClass]="{ 'flex-grow-1': isMobile }"
-        >Short Break <span class="text-muted small">(mins)</span></label
-      >
-      <input
-        class="form-control"
-        [ngClass]="{ 'w-50': isMobile }"
-        id="exampleFormControlInput1"
-        formControlName="shortBreak"
-      />
-    </div>
-    <div class="m-1" [ngClass]="{ 'd-flex align-items-center': isMobile }">
-      <label
-        for="exampleFormControlInput1"
-        class="form-label sub-label"
-        [ngClass]="{ 'flex-grow-1': isMobile }"
-        >Long Break <span class="text-muted small">(mins)</span></label
-      >
-      <input
-        class="form-control"
-        [ngClass]="{ 'w-50': isMobile }"
-        id="exampleFormControlInput1"
-        formControlName="longBreak"
-      />
+    <div *ngFor="let t of times">
+      <div class="m-1" [ngClass]="{ 'd-flex align-items-center': isMobile }">
+        <label
+          class="form-label sub-label"
+          [ngClass]="{ 'flex-grow-1': isMobile }"
+          >{{ t.type | camelcaseToTitlecase }}
+          <span class="text-muted small">(mins)</span></label
+        >
+        <input
+          class="form-control"
+          [ngClass]="{ 'w-50': isMobile }"
+          [formControlName]="t.type"
+        />
+      </div>
     </div>
   </div>
 </form>
-
 <hr />
 <div class="d-flex align-items-center justify-content-between">
   <label class="form-label main-label">Color</label>
   <div class="d-flex">
-    <button mat-mini-fab class="m-1 color-red" (click)="onUpdateColor('red')">
-      <fa-icon *ngIf="getIsColor('red')" [icon]="faCheck"></fa-icon>
-    </button>
     <button
+      *ngFor="let color of colors"
       mat-mini-fab
-      class="m-1 color-green"
-      (click)="onUpdateColor('green')"
+      class="m-1"
+      [ngClass]="color.className"
+      (click)="onUpdateColor(color.className)"
     >
-      <fa-icon *ngIf="getIsColor('green')" [icon]="faCheck"></fa-icon>
-    </button>
-    <button
-      mat-mini-fab
-      class="m-1 color-purple"
-      (click)="onUpdateColor('purple')"
-    >
-      <fa-icon *ngIf="getIsColor('purple')" [icon]="faCheck"></fa-icon>
+      <fa-icon
+        *ngIf="getIsSelected(color.className)"
+        [icon]="faCheck"
+      ></fa-icon>
     </button>
   </div>
 </div>
@@ -82,31 +49,14 @@
   <label class="form-label main-label">Font</label>
   <div class="d-flex">
     <button
+      *ngFor="let font of fonts"
       mat-mini-fab
       class="m-1"
       color=""
-      (click)="onUpdateFont('roboto')"
-      [ngClass]="{ selected: getIsFont('roboto') }"
+      (click)="onUpdateFont(font.className)"
+      [ngClass]="{ selected: getIsSelected(font.className) }"
     >
-      <span class="font-roboto">Aa</span>
-    </button>
-    <button
-      mat-mini-fab
-      class="m-1"
-      (click)="onUpdateFont('helv')"
-      color=""
-      [ngClass]="{ selected: getIsFont('helv') }"
-    >
-      <span class="font-helv">Aa</span>
-    </button>
-    <button
-      mat-mini-fab
-      class="m-1"
-      (click)="onUpdateFont('arial')"
-      color=""
-      [ngClass]="{ selected: getIsFont('arial') }"
-    >
-      <span class="font-arial">Aa</span>
+      <span [ngClass]="font.className">Aa</span>
     </button>
   </div>
 </div>
@@ -117,7 +67,7 @@
     <button
       mat-mini-fab
       class="m-1"
-      [ngClass]="{ selected: getIsLightMode() }"
+      [ngClass]="{ selected: getIsSelected('light-mode') }"
       (click)="onUpdateLightMode(true)"
       color=""
     >
@@ -126,7 +76,7 @@
     <button
       mat-mini-fab
       class="m-1"
-      [ngClass]="{ selected: !getIsLightMode() }"
+      [ngClass]="{ selected: getIsSelected('dark-mode') }"
       (click)="onUpdateLightMode(false)"
       color=""
     >

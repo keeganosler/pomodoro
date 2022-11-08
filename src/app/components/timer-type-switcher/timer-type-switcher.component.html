@@ -1,9 +1,9 @@
 <mat-button-toggle-group (change)="setTimerType($event)">
   <mat-button-toggle
-    [checked]="timerType == t"
-    *ngFor="let t of ['pomodoro', 'shortBreak', 'longBreak']"
-    [value]="t"
+    [checked]="timerType == t.type"
+    *ngFor="let t of times"
+    [value]="t.type"
     [disableRipple]="true"
-    >{{ t | camelcaseToTitlecase }}
+    >{{ t.type | camelcaseToTitlecase }}
   </mat-button-toggle>
 </mat-button-toggle-group>
