@@ -17,9 +17,9 @@ export class AppComponent implements OnInit {
   constructor(public dialog: MatDialog, public themeService: ThemeService) {}
 
   ngOnInit(): void {
-    this.themeService.onUpdateColor(COLORS[0].className);
+    this.themeService.onUpdateColor(COLORS[1].className);
     this.themeService.onUpdateFont(FONTS[0].className);
-    this.themeService.onUpdateLightMode(true);
+    this.themeService.onUpdateLightMode(false);
   }
 
   onOpenSettings() {

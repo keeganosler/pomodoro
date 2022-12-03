@@ -32,6 +32,10 @@
   background: transparent;
 }
 
+.dark-mode .mat-button-toggle-label-content {
+  color: $neutral-light !important;
+}
+
 .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
   line-height: 36px;
 }
