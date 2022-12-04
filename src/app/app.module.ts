@@ -15,6 +15,7 @@ import { TimerMainComponent } from './components/timer-main/timer-main.component
 import { TimerTypeSwitcherComponent } from './components/timer-type-switcher/timer-type-switcher.component';
 import { CamelcaseToTitlecasePipe } from './pipes/camelcase-to-titlecase.pipe';
 import { TimeConversionPipe } from './pipes/time-conversion.pipe';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TimeConversionPipe } from './pipes/time-conversion.pipe';
     MatProgressSpinnerModule,
     FontAwesomeModule,
     MatIconModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],
