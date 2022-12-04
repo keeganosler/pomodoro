@@ -19,24 +19,12 @@ export class ThemeService {
     this.store.dispatch(
       ColorsActions.changeColor({ newColor: colorClassName })
     );
-    let intersection: string[] = this.classList.filter((c) =>
-      COLOR_CLASSES.includes(c)
-    );
-    if (intersection.length) {
-      this.document.documentElement.classList.remove(intersection[0]);
-    }
-    this.document.documentElement.classList.add(colorClassName);
+    this.updateClassList(colorClassName, COLOR_CLASSES);
   }
 
   onUpdateFont(fontClassName: string) {
     this.store.dispatch(FontsActions.changeFont({ newFont: fontClassName }));
-    let intersection: string[] = this.classList.filter((c) =>
-      FONT_CLASSES.includes(c)
-    );
-    if (intersection.length) {
-      this.document.documentElement.classList.remove(intersection[0]);
-    }
-    this.document.documentElement.classList.add(fontClassName);
+    this.updateClassList(fontClassName, FONT_CLASSES);
   }
 
   onUpdateLightMode(lightMode: boolean) {
@@ -45,17 +33,19 @@ export class ThemeService {
         newLightTheme: lightMode ? 'light-mode' : 'dark-mode',
       })
     );
-    if (lightMode) {
-      if (this.classList.includes('dark-mode')) {
-        this.document.documentElement.classList.remove('dark-mode');
-      }
-      this.document.documentElement.classList.add('light-mode');
-    } else {
-      if (this.classList.includes('light-mode')) {
-        this.document.documentElement.classList.remove('light-mode');
-      }
-      this.document.documentElement.classList.add('dark-mode');
+    this.updateClassList(lightMode ? 'light-mode' : 'dark-mode', [
+      lightMode ? 'dark-mode' : 'light-mode',
+    ]);
+  }
+
+  updateClassList(newClassName: string, referenceClassList: string[]) {
+    let intersection: string[] = this.classList.filter((c) =>
+      referenceClassList.includes(c)
+    );
+    if (intersection.length) {
+      this.document.documentElement.classList.remove(intersection[0]);
     }
+    this.document.documentElement.classList.add(newClassName);
   }
 
   get classList(): string[] {

@@ -107,8 +107,4 @@ export class SettingsComponent implements OnInit {
   onUpdateLightMode(lightMode: boolean) {
     this.themeService.onUpdateLightMode(lightMode);
   }
-
-  getIsSelected(className: string) {
-    return this.themeService.classList.includes(className);
-  }
 }
