@@ -17,6 +17,7 @@ import { TimerTypeSwitcherComponent } from './components/timer-type-switcher/tim
 import { CamelcaseToTitlecasePipe } from './pipes/camelcase-to-titlecase.pipe';
 import { TimeConversionPipe } from './pipes/time-conversion.pipe';
 import { colorReducer } from './state/reducers/color.reducer';
+import { fontReducer } from './state/reducers/font.reducer';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { colorReducer } from './state/reducers/color.reducer';
     MatProgressSpinnerModule,
     FontAwesomeModule,
     MatIconModule,
-    StoreModule.forRoot({ color: colorReducer }, {}),
+    StoreModule.forRoot({ color: colorReducer, font: fontReducer }, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { COLOR_CLASSES, FONT_CLASSES } from '../app.contants';
 import { ColorsActions } from '../state/actions/color.actions';
+import { FontsActions } from '../state/actions/font.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,7 @@ export class ThemeService {
   }
 
   onUpdateFont(fontClassName: string) {
+    this.store.dispatch(FontsActions.changeFont({ newFont: fontClassName }));
     let intersection: string[] = this.classList.filter((c) =>
       FONT_CLASSES.includes(c)
     );

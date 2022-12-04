@@ -54,7 +54,7 @@
       class="m-1"
       color=""
       (click)="onUpdateFont(font.className)"
-      [ngClass]="{ selected: getIsSelected(font.className) }"
+      [ngClass]="{ selected: (font$ | async) === font.className }"
     >
       <span [ngClass]="font.className">Aa</span>
     </button>
@@ -85,7 +85,7 @@
   </div>
 </div>
 <hr />
-<!-- <div>{{ color$ | async }}</div> -->
+<!-- <div>{{ font$ | async }}</div> -->
 <div mat-dialog-actions>
   <button mat-stroked-button mat-dialog-close="">Close</button>
 </div>
