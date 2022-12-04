@@ -38,7 +38,7 @@
       (click)="onUpdateColor(color.className)"
     >
       <fa-icon
-        *ngIf="getIsSelected(color.className)"
+        *ngIf="(color$ | async) === color.className"
         [icon]="faCheck"
       ></fa-icon>
     </button>
@@ -85,6 +85,7 @@
   </div>
 </div>
 <hr />
+<!-- <div>{{ color$ | async }}</div> -->
 <div mat-dialog-actions>
   <button mat-stroked-button mat-dialog-close="">Close</button>
 </div>

@@ -1,14 +1,22 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { COLOR_CLASSES, FONT_CLASSES } from '../app.contants';
+import { ColorsActions } from '../state/actions/color.actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private store: Store
+  ) {}
 
   onUpdateColor(colorClassName: string) {
+    this.store.dispatch(
+      ColorsActions.changeColor({ newColor: colorClassName })
+    );
     let intersection: string[] = this.classList.filter((c) =>
       COLOR_CLASSES.includes(c)
     );

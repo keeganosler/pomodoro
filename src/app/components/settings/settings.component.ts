@@ -12,6 +12,9 @@ import { TimeConversionPipe } from '../../pipes/time-conversion.pipe';
 import { ThemeService } from '../../services/theme.service';
 import { TimerService } from '../../services/timer.service';
 
+import { Store } from '@ngrx/store';
+import { returnColor } from '../../state/selectors/color.selector';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -29,7 +32,8 @@ export class SettingsComponent implements OnInit {
     private timerService: TimerService,
     private themeService: ThemeService,
     private breakpointObserver: BreakpointObserver,
-    private timeConversionPipe: TimeConversionPipe
+    private timeConversionPipe: TimeConversionPipe,
+    private store: Store
   ) {
     this.createFormGroup();
   }
@@ -42,6 +46,8 @@ export class SettingsComponent implements OnInit {
   times = TIMES;
   colors = COLORS;
   fonts = FONTS;
+
+  color$ = this.store.select(returnColor);
 
   ngOnInit(): void {
     this.isMobile$.subscribe((val) => {
