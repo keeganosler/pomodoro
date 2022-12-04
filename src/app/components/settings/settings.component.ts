@@ -15,6 +15,7 @@ import { TimerService } from '../../services/timer.service';
 import { Store } from '@ngrx/store';
 import { returnColor } from '../../state/selectors/color.selector';
 import { returnFont } from '../../state/selectors/font.selector';
+import { returnLightTheme } from '../../state/selectors/light-theme.selector';
 
 @Component({
   selector: 'app-settings',
@@ -50,6 +51,7 @@ export class SettingsComponent implements OnInit {
 
   color$ = this.store.select(returnColor);
   font$ = this.store.select(returnFont);
+  lightTheme$ = this.store.select(returnLightTheme);
 
   ngOnInit(): void {
     this.isMobile$.subscribe((val) => {

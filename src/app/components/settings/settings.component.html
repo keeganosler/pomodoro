@@ -67,7 +67,7 @@
     <button
       mat-mini-fab
       class="m-1"
-      [ngClass]="{ selected: getIsSelected('light-mode') }"
+      [ngClass]="{ selected: (lightTheme$ | async) === 'light-mode' }"
       (click)="onUpdateLightMode(true)"
       color=""
     >
@@ -76,7 +76,7 @@
     <button
       mat-mini-fab
       class="m-1"
-      [ngClass]="{ selected: getIsSelected('dark-mode') }"
+      [ngClass]="{ selected: (lightTheme$ | async) === 'dark-mode' }"
       (click)="onUpdateLightMode(false)"
       color=""
     >
@@ -85,7 +85,6 @@
   </div>
 </div>
 <hr />
-<!-- <div>{{ font$ | async }}</div> -->
 <div mat-dialog-actions>
   <button mat-stroked-button mat-dialog-close="">Close</button>
 </div>

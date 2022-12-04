@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { COLOR_CLASSES, FONT_CLASSES } from '../app.contants';
 import { ColorsActions } from '../state/actions/color.actions';
 import { FontsActions } from '../state/actions/font.actions';
+import { LightThemesActions } from '../state/actions/light-theme.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,11 @@ export class ThemeService {
   }
 
   onUpdateLightMode(lightMode: boolean) {
+    this.store.dispatch(
+      LightThemesActions.changeLightTheme({
+        newLightTheme: lightMode ? 'light-mode' : 'dark-mode',
+      })
+    );
     if (lightMode) {
       if (this.classList.includes('dark-mode')) {
         this.document.documentElement.classList.remove('dark-mode');

@@ -18,6 +18,7 @@ import { CamelcaseToTitlecasePipe } from './pipes/camelcase-to-titlecase.pipe';
 import { TimeConversionPipe } from './pipes/time-conversion.pipe';
 import { colorReducer } from './state/reducers/color.reducer';
 import { fontReducer } from './state/reducers/font.reducer';
+import { lightThemeReducer } from './state/reducers/light-theme.reducer';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,10 @@ import { fontReducer } from './state/reducers/font.reducer';
     MatProgressSpinnerModule,
     FontAwesomeModule,
     MatIconModule,
-    StoreModule.forRoot({ color: colorReducer, font: fontReducer }, {}),
+    StoreModule.forRoot(
+      { color: colorReducer, font: fontReducer, lightTheme: lightThemeReducer },
+      {}
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],
