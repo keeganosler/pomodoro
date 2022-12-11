@@ -1,5 +1,6 @@
 @import "./../theme/theme.scss";
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
 .mat-button-toggle-group-appearance-standard,
 .mat-button-toggle-group {
@@ -7,35 +8,43 @@
   border-radius: 20px !important;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle-group-appearance-standard
   .mat-button-toggle
   + .mat-button-toggle {
   border-left: none !important;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle-checked .mat-button-toggle-button {
   border-radius: 20px !important;
   background-color: $red-primary;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle-checked,
 .mat-button-toggle-checked.mat-button-toggle-appearance-standard
   .cdk-focused
   .cdk-mouse-focused {
   background-color: transparent !important;
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
   .mat-button-toggle-focus-overlay {
     background-color: transparent !important;
   }
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle-appearance-standard {
   background: transparent;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .dark-mode .mat-button-toggle-label-content {
   color: $neutral-light !important;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
   line-height: 36px;
 }

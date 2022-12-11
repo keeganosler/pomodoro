@@ -16,18 +16,19 @@ $purple-primary: map-get($purple-palette, 400);
 
 @mixin colour($colour) {
   background-color: $colour;
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
   .mat-button-toggle-checked .mat-button-toggle-button {
     background-color: $colour;
   }
-  .mat-progress-spinner circle,
-  .mat-spinner circle {
+  .mat-mdc-progress-spinner circle,
+  .mat-mdc-progress-spinner circle {
     stroke: $colour;
   }
 }
 
 @mixin light-mode {
   body,
-  .mat-dialog-container,
+  .mat-mdc-dialog-container,
   .form-control {
     background-color: $neutral-light;
     color: $neutral-dark;
@@ -36,16 +37,23 @@ $purple-primary: map-get($purple-palette, 400);
 
 @mixin dark-mode {
   body,
-  .mat-dialog-container,
+  .mat-mdc-dialog-container,
+  .mat-mdc-dialog-container .mdc-dialog__surface,
   .form-control {
     background-color: $neutral-dark;
     color: $neutral-light;
   }
-  .mat-stroked-button {
+  .mat-mdc-outlined-button {
     border: 1px solid $neutral-light !important;
     color: $neutral-light !important;
   }
-  .mat-stroked-button:not(.mat-button-disabled) {
+  /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
+  .mat-mdc-outlined-button:not(.mat-button-disabled) {
     border-color: $neutral-light !important;
+  }
+  .mat-mdc-fab,
+  .mat-mdc-mini-fab {
+    background-color: $neutral-light;
+    color: $neutral-dark;
   }
 }

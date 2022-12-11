@@ -1,90 +1,92 @@
-<h3>Settings</h3>
-<hr />
-<label class="text-center form-label main-label">Times</label>
-<form [formGroup]="timesFormGroup">
-  <div
-    class="d-flex"
-    [ngClass]="{
-      'align-items-center justify-content-between': !isMobile,
-      'flex-column': isMobile
-    }"
-  >
-    <div *ngFor="let t of times">
-      <div class="m-1" [ngClass]="{ 'd-flex align-items-center': isMobile }">
-        <label
-          class="form-label sub-label"
-          [ngClass]="{ 'flex-grow-1': isMobile }"
-          >{{ t.type | camelcaseToTitlecase }}
-          <span class="text-muted small">(mins)</span></label
-        >
-        <input
-          class="form-control"
-          [ngClass]="{ 'w-50': isMobile }"
-          [formControlName]="t.type"
-        />
+<div class="p-4">
+  <h3>Settings</h3>
+  <hr />
+  <label class="text-center form-label main-label">Times</label>
+  <form [formGroup]="timesFormGroup">
+    <div
+      class="d-flex"
+      [ngClass]="{
+        'align-items-center justify-content-between': !isMobile,
+        'flex-column': isMobile
+      }"
+    >
+      <div *ngFor="let t of times">
+        <div class="m-1" [ngClass]="{ 'd-flex align-items-center': isMobile }">
+          <label
+            class="form-label sub-label"
+            [ngClass]="{ 'flex-grow-1': isMobile }"
+            >{{ t.type | camelcaseToTitlecase }}
+            <span class="text-muted small">(mins)</span></label
+          >
+          <input
+            class="form-control"
+            [ngClass]="{ 'w-50': isMobile }"
+            [formControlName]="t.type"
+          />
+        </div>
       </div>
     </div>
+  </form>
+  <hr />
+  <div class="d-flex align-items-center justify-content-between">
+    <label class="form-label main-label">Color</label>
+    <div class="d-flex">
+      <button
+        *ngFor="let color of colors"
+        mat-mini-fab
+        class="m-1"
+        [ngClass]="color.className"
+        (click)="onUpdateColor(color.className)"
+      >
+        <fa-icon
+          *ngIf="(color$ | async) === color.className"
+          [icon]="faCheck"
+        ></fa-icon>
+      </button>
+    </div>
   </div>
-</form>
-<hr />
-<div class="d-flex align-items-center justify-content-between">
-  <label class="form-label main-label">Color</label>
-  <div class="d-flex">
-    <button
-      *ngFor="let color of colors"
-      mat-mini-fab
-      class="m-1"
-      [ngClass]="color.className"
-      (click)="onUpdateColor(color.className)"
-    >
-      <fa-icon
-        *ngIf="(color$ | async) === color.className"
-        [icon]="faCheck"
-      ></fa-icon>
-    </button>
+  <hr />
+  <div class="d-flex align-items-center justify-content-between">
+    <label class="form-label main-label">Font</label>
+    <div class="d-flex">
+      <button
+        *ngFor="let font of fonts"
+        mat-mini-fab
+        class="m-1"
+        color=""
+        (click)="onUpdateFont(font.className)"
+        [ngClass]="{ selected: (font$ | async) === font.className }"
+      >
+        <span [ngClass]="font.className">Aa</span>
+      </button>
+    </div>
   </div>
-</div>
-<hr />
-<div class="d-flex align-items-center justify-content-between">
-  <label class="form-label main-label">Font</label>
-  <div class="d-flex">
-    <button
-      *ngFor="let font of fonts"
-      mat-mini-fab
-      class="m-1"
-      color=""
-      (click)="onUpdateFont(font.className)"
-      [ngClass]="{ selected: (font$ | async) === font.className }"
-    >
-      <span [ngClass]="font.className">Aa</span>
-    </button>
+  <hr />
+  <div class="d-flex align-items-center justify-content-between">
+    <label class="form-label main-label">Light Mode</label>
+    <div class="d-flex">
+      <button
+        mat-mini-fab
+        class="m-1"
+        [ngClass]="{ selected: (lightTheme$ | async) === 'light-mode' }"
+        (click)="onUpdateLightMode(true)"
+        color=""
+      >
+        <fa-icon [icon]="faSun"></fa-icon>
+      </button>
+      <button
+        mat-mini-fab
+        class="m-1"
+        [ngClass]="{ selected: (lightTheme$ | async) === 'dark-mode' }"
+        (click)="onUpdateLightMode(false)"
+        color=""
+      >
+        <fa-icon [icon]="faMoon"></fa-icon>
+      </button>
+    </div>
   </div>
-</div>
-<hr />
-<div class="d-flex align-items-center justify-content-between">
-  <label class="form-label main-label">Light Mode</label>
-  <div class="d-flex">
-    <button
-      mat-mini-fab
-      class="m-1"
-      [ngClass]="{ selected: (lightTheme$ | async) === 'light-mode' }"
-      (click)="onUpdateLightMode(true)"
-      color=""
-    >
-      <fa-icon [icon]="faSun"></fa-icon>
-    </button>
-    <button
-      mat-mini-fab
-      class="m-1"
-      [ngClass]="{ selected: (lightTheme$ | async) === 'dark-mode' }"
-      (click)="onUpdateLightMode(false)"
-      color=""
-    >
-      <fa-icon [icon]="faMoon"></fa-icon>
-    </button>
+  <hr />
+  <div mat-dialog-actions>
+    <button mat-stroked-button mat-dialog-close="">Close</button>
   </div>
-</div>
-<hr />
-<div mat-dialog-actions>
-  <button mat-stroked-button mat-dialog-close="">Close</button>
 </div>
