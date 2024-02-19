@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   onOpenSettings() {
     this.dialog.open(SettingsComponent, {
       width: '600px',
+      ariaLabel: 'settings'
     });
   }
 }

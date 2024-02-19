@@ -15,11 +15,13 @@
           <label
             class="form-label sub-label"
             [ngClass]="{ 'flex-grow-1': isMobile }"
+            [for]="t.type"
             >{{ t.type | camelcaseToTitlecase }}
             <span class="text-muted small">(mins)</span></label
           >
           <input
             class="form-control"
+            [id]="t.type"
             [ngClass]="{ 'w-50': isMobile }"
             [formControlName]="t.type"
           />
