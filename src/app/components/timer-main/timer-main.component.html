@@ -1,10 +1,16 @@
-<mat-progress-spinner diameter="200" [value]="timerProgress">
+<mat-progress-spinner
+  diameter="200"
+  [value]="timerProgress"
+  [attr.aria-label]="'timer'"
+>
 </mat-progress-spinner>
 <div class="spinner-text">
   <div class="d-flex flex-column">
     <h1 class="text-center">
       {{
-        timerService.currentTime | timeConversion: "sec":"msec" | date: "mm:ss"
+        timerService.currentTime
+          | timeConversion : "sec" : "msec"
+          | date : "mm:ss"
       }}
     </h1>
     <div class="d-flex">
