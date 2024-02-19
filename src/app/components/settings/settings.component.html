@@ -36,6 +36,8 @@
       <button
         *ngFor="let color of colors"
         mat-mini-fab
+        type="button"
+        [attr.aria-label]="color + ' theme'"
         class="m-1"
         [ngClass]="color.className"
         (click)="onUpdateColor(color.className)"
@@ -54,6 +56,8 @@
       <button
         *ngFor="let font of fonts"
         mat-mini-fab
+        type="button"
+        [attr.aria-label]="font + ' font'"
         class="m-1"
         color=""
         (click)="onUpdateFont(font.className)"
@@ -69,6 +73,8 @@
     <div class="d-flex">
       <button
         mat-mini-fab
+        type="button"
+        aria-label="light theme"
         class="m-1"
         [ngClass]="{ selected: (lightTheme$ | async) === 'light-mode' }"
         (click)="onUpdateLightMode(true)"
@@ -78,6 +84,8 @@
       </button>
       <button
         mat-mini-fab
+        type="button"
+        aria-label="dark theme"
         class="m-1"
         [ngClass]="{ selected: (lightTheme$ | async) === 'dark-mode' }"
         (click)="onUpdateLightMode(false)"

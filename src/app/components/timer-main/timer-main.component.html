@@ -16,11 +16,18 @@
     <div class="d-flex">
       <button
         mat-icon-button
+        type="button"
+        [attr.aria-label]="timerOn ? 'pause timer' : 'start timer'"
         (click)="timerOn ? onStopTimer() : onStartTimer()"
       >
         <fa-icon [icon]="playPauseIcon"></fa-icon>
       </button>
-      <button mat-icon-button (click)="onClearTimer()">
+      <button
+        mat-icon-button
+        type="button"
+        aria-label="reset timer"
+        (click)="onClearTimer()"
+      >
         <fa-icon [icon]="faRotateLeft"></fa-icon>
       </button>
     </div>
